@@ -22,10 +22,6 @@ const tasksArr=[
 function check(status) {
   if (status === true) { return "checked" } else { return null }
 }
-
-// alert(check(tasksArr[0].completed))
-
-
 const taskList = document.getElementById('task-list');
 function display() {
   taskList.innerHTML = ''
@@ -37,21 +33,4 @@ function display() {
   }  );
   taskList.innerHTML += `<button type="submit">Clear all completed</button>`
 }
-
-// 
 display();
-
-
-
-
-// function component() {
-//   const element = document.createElement('div');
-
-//    // Lodash, now imported by this script
-//   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    
-
-//   return element;
-
-
-// document.body.appendChild(component());
