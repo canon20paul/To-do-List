@@ -2,19 +2,20 @@ import _ from 'lodash';
 import './index.css';
 
 const tasksArr=[
-  {index: 0,
-    task:'Singing Songs',
-    completed: false
+  {
+    description: 'Going to the Market',
+    completed: false,
+    index: 1
   },
   {
-    index: 1,
-    task: 'Going to the Market',
-    completed: false
+    description: 'Going to the Market',
+    completed: false,
+    index:1
   },
   {
-    index: 2,
-    task: 'Coding Microverse Projects',
-    completed: true
+    description: 'Going to the Market',
+    completed: true,
+    index: 1
   }
 ];
 
@@ -31,7 +32,8 @@ function display() {
   // Books.timeDisplay()
   tasksArr.forEach((task, i) => {
     
-    taskList.innerHTML += `<div class="taskR"><input type="checkbox"   ${check(tasksArr[i].completed)} class="box"><p class="task">${tasksArr[i].task}</p></div>`;
+    taskList.innerHTML += `<div class="taskR"><input type="checkbox"   ${check(tasksArr[i].completed)} class="box">
+    <p class="task">${tasksArr[i].description}</p><div class="img"></div></div>`;
   }  );
   taskList.innerHTML += `<button type="submit">Clear all completed</button>`
 }
