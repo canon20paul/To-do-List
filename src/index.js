@@ -1,51 +1,58 @@
-import _ from 'lodash';
+import _, { indexOf } from 'lodash';
 import './index.css';
 import {TaskList} from './TasklistFile.js';
 
 const textInputAdd = document.getElementById('addTT');
 const taskList = document.getElementById('task-list');
-// const tasksArr=[
-//   {
-//     description: 'Going to the Market',
-//     completed: false,
-//     index: 1
-//   },
-//   {
-//     description: 'Going to the Market',
-//     completed: false,
-//     index:1
-//   },
-//   {
-//     description: 'Going to the Market',
-//     completed: true,
-//     index: 1
-//   }
-// ];
-
-// TaskList.taskArray = tasksArr;
 
 function check(status) {
-  if (status === true) { return "checked" } else { return null }
+  if (status === true) { return "checked" } else { return "unchecked" }
 }
-TaskList.taskArray = JSON.parse(localStorage.getItem('coward')) || [];
 
 function display() {
+  TaskList.taskArray = JSON.parse(localStorage.getItem('coward')) || [];
   taskList.innerHTML = ''
-  
   TaskList.taskArray.forEach((task, i) => {
-    
-    taskList.innerHTML += `<div class="taskR"><input type="checkbox"   ${check(TaskList.taskArray[i].completed)} class="box">
-    <input  type="text" class="task" value="${TaskList.taskArray[i].description}"/><div class="img"></div></div>`;
+  taskList.innerHTML += `<div class="taskR"><input type="checkbox" ${check(TaskList.taskArray[i].completed)} class="box">
+   <p id=${i} class="task" title="Double Click to Edit & Enter to Save">${TaskList.taskArray[i].description}</p><div class="img" id="deleteBtn ${i}" title="${i}"></div></div>`;
   }  );
-  taskList.innerHTML += `<button type="submit" id="btnAdd">Clear all completed</button>`
-  
 }
 
 display();
-
+//Add Task Event Listner
 textInputAdd.addEventListener('keypress',  (e) => {
-  let ddd = textInputAdd.value
-  if (e.key === 'Enter') { TaskList.addTask(ddd);}
-  alert(TaskList.taskArray.length);
-   display();
-})
+    if (e.key === 'Enter') { TaskList.addTask(textInputAdd.value);}
+   location.reload();
+ })
+
+  //Delete Task Event Listner
+  const deleteBtn = document.querySelectorAll('.img');
+   deleteBtn.forEach((Btn) => {
+          Btn.addEventListener('click', (e) => {
+                TaskList.delete(Btn.title);
+         location.reload();
+    });
+  });
+
+//EditTask Event Listner
+const taskArray = document.querySelectorAll('.task');
+taskArray.forEach((task) => {
+  task.addEventListener('dblclick', (e) => {
+    task.contentEditable=true;
+  });
+  task.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') { task.contentEditable = false;
+      for(let i=0; i < TaskList.taskArray.length; i=1+i){
+        
+                if(TaskList.taskArray[i].index==task.id){
+    TaskList.taskArray[i].description=e.target.innerHTML;
+        }
+      }
+      localStorage.setItem('coward', JSON.stringify(TaskList.taskArray));
+  }
+});
+
+});
+
+
+
