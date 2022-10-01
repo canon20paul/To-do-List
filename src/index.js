@@ -62,13 +62,18 @@ taskArray.forEach((task) => {
         checkArray.forEach((checkB,i) => {
           
             checkB.addEventListener('click', (e) => {
-              alert(i+1)
-              Interaction.updateComplete(i)
+            Interaction.updateComplete(i)
               display();
               location.reload();
 
             });
         });
+
+//Deleting Completed Tasks
+document.getElementById('btnDelComplete').addEventListener('click', ( ) => {
+  Interaction.deleteComplete();
+  location.reload();
+}) 
 
 
 

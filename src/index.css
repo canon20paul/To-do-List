@@ -94,7 +94,7 @@ button {
 }
 
 .taskStyle {
-  font-style: oblique;
+  text-decoration: line-through;
 }
 
 .box {
