@@ -93,6 +93,10 @@ button {
   border: none;
 }
 
+.taskStyle {
+  text-decoration: line-through;
+}
+
 .box {
   font-size: 50px;
 }
@@ -114,15 +118,19 @@ button {
   font-size: 30px;
   margin: auto;
   margin-right: 25px;
-  margin-bottom: 2px;
   transition: all 0.5s;
-  height: 70%;
+  height: 100%;
+}
+
+.save:hover {
+  transform: rotate(90deg);
 }
 
 .addDiv {
   width: 101%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 65px;
   background-color: #fff;
   border-top: rgb(218, 210, 210) 2px solid;
