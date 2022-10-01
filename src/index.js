@@ -19,11 +19,16 @@ function display() {
 }
 display();
 //Add Task Event Listner
+document.querySelector('.save').addEventListener('click', (e) => {
+   TaskList.addTask(textInputAdd.value);
+    location.reload();
+})
+//Add Task Event Listner
 textInputAdd.addEventListener('keypress',  (e) => {
-    if (e.key === 'Enter') { TaskList.addTask(textInputAdd.value);}
-   location.reload();
+    if (e.key === 'Enter') { TaskList.addTask(textInputAdd.value);
+   location.reload();}
  })
-  //Delete Task Event Listner
+ //Delete Task Event Listner
   const deleteBtn = document.querySelectorAll('.img');
    deleteBtn.forEach((Btn) => {
           Btn.addEventListener('click', (e) => {
