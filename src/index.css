@@ -93,6 +93,10 @@ button {
   border: none;
 }
 
+.taskStyle {
+  font-style: oblique;
+}
+
 .box {
   font-size: 50px;
 }
